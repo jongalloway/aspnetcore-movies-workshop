@@ -240,3 +240,22 @@ Update the `Pages/Index.cshtml` file to use the partial view:
 ```
 
 ## Add a Bootstrap theme
+
+Bootstrap is a popular CSS framework for building responsive web applications. It includes a number of themes that can be used to quickly add some styling to your application. We'll use a free theme called [Morph](https://bootswatch.com/morph/) from [Start Bootstrap](https://bootswatch.com/).
+
+Update the *head* section of the `Pages/_Layout.cshtml` file to include the following:
+
+```html
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"] - RazorPagesMovie</title>
+@*    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />*@
+     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootswatch@5.1.0/dist/morph/bootstrap.min.css">
+    <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
+    <link rel="stylesheet" href="~/RazorPagesMovie.styles.css" asp-append-version="true" />
+</head>
+
+Run the application to see the updated theme.
+
+```html
