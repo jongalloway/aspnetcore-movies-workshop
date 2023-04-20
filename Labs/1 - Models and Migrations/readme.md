@@ -227,10 +227,11 @@ Since this project will be used as our backend admin system, it makes more sense
 The new scaffolded pages are working, but we need to restore the *Index* page to restore the search and *Genre* filter.
 
 1. Open the *Index.cshtml* page in the *Pages/Admin/Movies* directory.
-1. Add the following property:
+1. Add the following properties:
     
     ```csharp
     public SelectList Genres { get; set; } = default!;
+    public string GenreId { get; set; } = default!;    
     ```
 
 1. Change the `OnGetAsync` method to read as follows:
