@@ -258,5 +258,3 @@ Update the *head* section of the `Pages/_Layout.cshtml` file to include the foll
 ```
 
 Run the application to see the updated theme.
-
-```html
