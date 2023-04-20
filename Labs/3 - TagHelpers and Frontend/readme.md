@@ -139,6 +139,104 @@ Now when you run the application you will see links to the **Movies** and **Genr
 
 ## Add News to the home page
 
+Let's add a news section to the home page. We'll use the **Bogus** NuGet package to generate some fake news articles. We'll also use the **Bootstrap** NuGet package to add some styling to the news section.
+
+### Add the Bogus NuGet package
+
+[Bogus](https://github.com/bchavez/Bogus) is a .NET library for generating fake data. It's useful for generating test data, but we'll use it to generate some fake news articles for our home page. Later this could be replaced with a real news feed.
+
+Add the **Bogus** NuGet package to the *RazorPagesMovie* project:
+
+```powershell
+dotnet add package Bogus
+```
+
+### Add a News model
+
+Add the following **NewsItem** class below the **IndexModel** class in the `Pages/Index.cshtml.cs` file:
+
+```csharp
+public class NewsItem
+{
+    public string Title { get; set; } = default!;
+    public string Summary { get; set; } = default!;
+    public string Url { get; set; } = default!;
+    public string ImageUrl { get; set; } = default!;
+    public DateOnly Date { get; set; } = default!;
+}
+```
+
+Update the `OnGet` method to appear as follows:
+
+```csharp
+public void OnGet()
+{
+    var faker = new Faker<NewsItem>()
+        .RuleFor(m => m.Title, f => f.Random.Words(5))
+        .RuleFor(m => m.Summary, f => f.Lorem.Sentences(3))
+        .RuleFor(m => m.ImageUrl, f => f.Image.LoremFlickrUrl(300, 300, "movie"))
+        .RuleFor(m => m.Date, f => f.Date.RecentDateOnly(50))
+        .RuleFor(m => m.Url, f => "https://devblogs.microsoft.com/dotnet/");
+    RecentNews = faker.Generate(10);
+}
+```
+
+Add the following markup to the bottom of the `Pages/Index.cshtml` file:
+
+```html
+<div class="row row-cols-1 row-cols-md-4 g-4">
+
+    @foreach (var item in Model)
+    {
+        <div class="col">
+            <div class="card">
+                <img src="@item.ImageUrl" class="card-img-top" alt="...">
+                <div class="card-body">
+                    <h5 class="card-title">@item.Title</h5>
+                    <h6 class="card-subtitle">@item.Date.ToShortDateString()</h6>
+                    <p class="card-text">
+                        @item.Summary
+                    </p>
+                    <a class="card-link" href="@item.Url">Read more...</a>
+                </div>
+            </div>
+        </div>
+    }
+</div>
+```
+
 ## Convert the news section to use a partial view
+
+Create a new partial view in the *RazorPagesMovie* project called `_News.cshtml` in the `Pages/Shared` folder. Add the following markup to the file:
+
+```html
+@model List<NewsItem>
+
+<div class="row row-cols-1 row-cols-md-4 g-4">
+
+    @foreach (var item in Model)
+    {
+        <div class="col">
+            <div class="card">
+                <img src="@item.ImageUrl" class="card-img-top" alt="...">
+                <div class="card-body">
+                    <h5 class="card-title">@item.Title</h5>
+                    <h6 class="card-subtitle">@item.Date.ToShortDateString()</h6>
+                    <p class="card-text">
+                        @item.Summary
+                    </p>
+                    <a class="card-link" href="@item.Url">Read more...</a>
+                </div>
+            </div>
+        </div>
+    }
+</div>
+```
+
+Update the `Pages/Index.cshtml` file to use the partial view:
+
+```html
+<partial name="_News" model="Model.RecentNews" />
+```
 
 ## Add a Bootstrap theme
