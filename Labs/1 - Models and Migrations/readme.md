@@ -37,12 +37,13 @@ Add a new Class Library project named *AmazingMovies.Models*.
 
 1. In the **File** menu, select **File** > **Add** > ***New Project**. 
 1. Choose the **Class Library** template and click **Next**.
+1. Name the project **AmazingMovies.Models** and click **Next**.
 1. Select **.NET 7** and click **Create**.
 
 ### Adding a new Class Library using the command line
 
 1. In the root of the solution (containing `RazorPagesMovie.sln`) type `dotnet new classlib -o AmazingMovies.Models -f net7.0`
-1. In the same directory, type `dotnet sln add AmazingMovies.Shared`.
+1. In the same directory, type `dotnet sln add AmazingMovies.Models`.
 
 ## Rename the solution
 
@@ -78,18 +79,21 @@ namespace AmazingMovies.Models
 Replace the code in `Movie.cs` with the following (this is exact same code from the previous project, only the namespace has been updated):
 
 ```csharp
-public class Movie
+namespace AmazingMovies.Models
 {
-    public int ID { get; set; }
-    public string? Title { get; set; }
+    public class Movie
+    {
+        public int ID { get; set; }
+        public string? Title { get; set; }
 
-    [Display(Name = "Release Date")]
-    [DataType(DataType.Date)]
-    public DateTime ReleaseDate { get; set; }
-    public string? Genre { get; set; }
+        [Display(Name = "Release Date")]
+        [DataType(DataType.Date)]
+        public DateTime ReleaseDate { get; set; }
+        public string? Genre { get; set; }
 
-    [Column(TypeName = "decimal(18, 2)")]
-    public decimal Price { get; set; }
+        [Column(TypeName = "decimal(18, 2)")]
+        public decimal Price { get; set; }
+    }
 }
 ```
 
