@@ -1,0 +1,21 @@
+﻿@model List<NewsItem>
+
+<div class="row row-cols-1 row-cols-md-4 g-4">
+
+    @foreach (var item in Model)
+    {
+        <div class="col">
+            <div class="card">
+                <img src="@item.ImageUrl" class="card-img-top" alt="...">
+                <div class="card-body">
+                    <h5 class="card-title">@item.Title</h5>
+                    <h6 class="card-subtitle">@item.Date.ToShortDateString()</h6>
+                    <p class="card-text">
+                        @item.Summary
+                    </p>
+                    <a class="card-link" href="@item.Url">Read more...</a>
+                </div>
+            </div>
+        </div>
+    }
+</div>

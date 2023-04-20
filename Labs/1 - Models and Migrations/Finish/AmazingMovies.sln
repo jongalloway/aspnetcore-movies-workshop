@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.0.32112.339
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RazorPagesMovie", "RazorPagesMovie\RazorPagesMovie.csproj", "{8D5781DC-DC5E-4FC4-8494-7831913C724E}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AmazingMovies.Models", "AmazingMovies.Models\AmazingMovies.Models.csproj", "{F0917B2D-126A-425B-8DE3-DEE5A2299965}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{8D5781DC-DC5E-4FC4-8494-7831913C724E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8D5781DC-DC5E-4FC4-8494-7831913C724E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8D5781DC-DC5E-4FC4-8494-7831913C724E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8D5781DC-DC5E-4FC4-8494-7831913C724E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F0917B2D-126A-425B-8DE3-DEE5A2299965}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F0917B2D-126A-425B-8DE3-DEE5A2299965}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F0917B2D-126A-425B-8DE3-DEE5A2299965}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F0917B2D-126A-425B-8DE3-DEE5A2299965}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {859A476B-56DC-4874-A8CD-170D89A81002}
+	EndGlobalSection
+EndGlobal
