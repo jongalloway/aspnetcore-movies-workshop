@@ -186,7 +186,7 @@ Add the following markup to the bottom of the `Pages/Index.cshtml` file:
 ```html
 <div class="row row-cols-1 row-cols-md-4 g-4">
 
-    @foreach (var item in Model)
+    @foreach (var item in Model.RecentNews)
     {
         <div class="col">
             <div class="card">
@@ -255,6 +255,7 @@ Update the *head* section of the `Pages/_Layout.cshtml` file to include the foll
     <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
     <link rel="stylesheet" href="~/RazorPagesMovie.styles.css" asp-append-version="true" />
 </head>
+```
 
 Run the application to see the updated theme.
 
