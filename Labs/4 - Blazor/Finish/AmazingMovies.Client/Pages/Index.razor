@@ -1,0 +1,42 @@
+﻿@page "/"
+@using AmazingMovies.Models;
+@using Bogus;
+@using Microsoft.AspNetCore.Components.QuickGrid
+@using MyMovies.Services;
+
+<PageTitle>Index</PageTitle>
+
+<h1>🎬Amazing Movies. The best site ever made.🎬</h1>
+
+<div class="row row-cols-1 row-cols-md-4 g-4">
+    @foreach (var item in movies)
+    {
+        <div class="col movie-card">
+            <div class="card text-white bg-dark h-100">
+                <span class="lazy-load-image-background blur lazy-load-image-loaded" style="color: transparent; display: inline-block; height: 350px; width: 100%;">
+                    <img src="https://image.tmdb.org/t/p/w500/@item.Poster" width="100%" height="350" alt="movie" style="object-fit: cover;">
+                </span>
+                <div class="card-body">
+                    <h5 class="card-title">@item.Title</h5>
+                    <h6><span class="badge bg-secondary">@item.ReleaseDate.Year</span></h6>
+                    <p class="card-text">
+                        @item.Plot
+                    </p>
+                </div>
+                <div class="card-footer mt-auto">
+                    <a href="#" class="btn btn-outline-secondary">@item.Genre.Name</a>
+                </div>
+            </div>
+        </div>
+    }
+</div>
+
+@code {
+    private IQueryable<Movie>? movies;
+
+    protected override async Task OnInitializedAsync()
+    {
+        MovieService movieService = new();
+        movies = await movieService.GetMovies();
+    }
+}
