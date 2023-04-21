@@ -11,7 +11,7 @@ We'll be continuing from the code in the previous lab. If you haven't completed 
 Visual Studio:
 1. Open the **AmazingMovies.sln** file in Visual Studio.
 1. Right-click on the **AmazingMovies** solution and select **Add** > **New Project**.
-1. In the **Add a new project** dialog, select **Blazor App** and click **Next**.
+1. In the **Add a new project** dialog, select **Blazor WebAssembly App** and click **Next**.
 1. In the **Configure your new project** dialog, set the following values:
     - **Project name**: **AmazingMovies.Client**
     - **Location**: (leave unchanged)
@@ -88,8 +88,6 @@ In this section, you will add a list of fake movies to the Index page using the 
             .RuleFor(m => m.Title, f => f.Random.Words(3))
             .RuleFor(m => m.Genre, f => f.PickRandom(genres))
             .RuleFor(m => m.ReleaseDate, f => f.Date.Past(50))
-            .RuleFor(m => m.Poster, f => f.PickRandom(posters))
-            .RuleFor(m => m.Plot, f => f.Rant.Review("movie"))
             .RuleFor(m => m.Price, f => f.Finance.Amount(5, 50));
         movies = faker.Generate(100).AsQueryable();
     }
@@ -117,7 +115,7 @@ The **QuickGrid** is a handy component that can be used to quickly display data 
     ```html
     <QuickGrid Items="@movies">
         <PropertyColumn Property="@(m => m.Title)" Sortable="true" />
-        <PropertyColumn Property="@(m => m.Genre)" Sortable="true" />
+        <PropertyColumn Property="@(m => m.Genre.Name)" Sortable="true" />
         <PropertyColumn Property="@(m => m.ReleaseDate)" Format="yyyy-MM-dd" Sortable="true" />
     </QuickGrid>
     ```
